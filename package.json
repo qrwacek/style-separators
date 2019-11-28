@@ -1,0 +1,78 @@
+{
+	"name": "style-separators",
+	"displayName": "Style Separators",
+	"description": "Adds separators to style blocks",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/bargol/style-separators"
+	},
+	"publisher": "bargol",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.33.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.styleSeparators"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.styleSeparators",
+				"title": "Add Style Separators"
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"properties": {
+				"styleSeparators.lineWidth": {
+					"description": "Max line width of the separator",
+					"type": "number",
+					"default": 120
+				},
+				"styleSeparators.lineCharacter": {
+					"description": "Character used to create separator line",
+					"type": "string",
+					"default": "-"
+				},
+				"styleSeparators.variantPrefix": {
+					"description": "Prefix used to detect variant",
+					"type": "string",
+					"default": "&--"
+				},
+				"styleSeparators.variantTitle": {
+					"description": "Template used for variant title. `{variant}` will be replaced with variant name",
+					"type": "string",
+					"default": "variant {variant}"
+				},
+				"styleSeparators.statePrefix": {
+					"description": "Prefix used to detect state",
+					"type": "string",
+					"default": "&."
+				},
+				"styleSeparators.stateTitle": {
+					"description": "Template used for state title. `{state}` will be replaced with state name",
+					"type": "string",
+					"default": "state {state}"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28",
+		"tslint": "^5.12.1",
+		"@types/node": "^10.12.21",
+		"@types/mocha": "^2.2.42"
+	}
+}
